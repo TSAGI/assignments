@@ -9,6 +9,11 @@ class Fields
         @area = area
     end
 
+    #this method collects food from every one of your fields and 
+    #records how much total food you have collected, in this format(example):
+    #Total Food Collected:
+    #corn: 2000
+    #beans: 3000
     def self.harvest        
        fields = @@all_fields.map {|field| { type: field[:type] }}
        fields.uniq!       
@@ -24,6 +29,8 @@ class Fields
         puts
     end
 
+    #this method lists each field with it's type, area, and harvest
+    #(which I called total_food, because I already have a harvest method)
     def self.relax
         @@all_fields.each {|field| 
             field.each {|k,v|puts "#{k}: #{v}"}
@@ -31,6 +38,8 @@ class Fields
         }
     end
 
+    #this method prompts the user for a number, and then uses that 
+    #number to find the index in the array where the field is located 
     def self.status
         x = @@all_fields.length        
         if x > 0
@@ -45,6 +54,8 @@ class Fields
         end        
     end
 
+    #this method creates a new field, which is stored in hash format,
+    #and then added to an array.
     def self.create(type, food_per_hectare, area)
         new_field = Fields.new(type, food_per_hectare, area)
         @current_field = {:type => type, :area => area, 
@@ -53,6 +64,8 @@ class Fields
         return new_field
     end
 
+    #this method asks the user to input the variables that will be used
+    #to create a new field.
     def self.add
         print "What type of crop will you be planting: "
         type = gets.chomp

@@ -1,6 +1,6 @@
 gem 'activerecord', '=4.2.10'
 require 'active_record'
-# require 'mini_record'
+require 'mini_record'
 
 # #connect to sqlite3 database program
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'film.sqlite3')
